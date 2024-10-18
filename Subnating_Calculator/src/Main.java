@@ -8,10 +8,14 @@ public class Main  {
             // Get the IPv4 address from the user
             System.out.print("Enter an IPv4 address: ");
             String ipAddressInput = in.nextLine();
+            // Get the Prefix from the user
+            System.out.print("Enter The Prefix Of ip: ");
+            int Prefix= in.nextInt();
 
             // Input: Number of needed hosts
             System.out.print("Enter a number of needed hosts= ");
             int numberOfHosts = in.nextInt();
+
 
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
@@ -48,7 +52,8 @@ public class Main  {
             String subnetMaskDecimal = subnetCalculator.calculateSubnetMaskDecimal();
             System.out.println("The subnet mask in decimal is = " + subnetMaskDecimal);
 
-            System.out.println("The number of networks that will be available from this ip= "+ (closestPowerOfTwo - 256));
+            int num_of_Networks = (int) Math.pow(2,subnetPrefixLength-Prefix);
+            System.out.println("The number of networks that will be available from this ip= "+num_of_Networks);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
